@@ -3,6 +3,7 @@ from PIL import ImageGrab
 import time
 import pyautogui
 import numpy as np
+import keyboard
 
 
 def auto_pot():
@@ -13,7 +14,6 @@ def auto_pot():
     health = ImageGrab.grab(bbox=(780 * res, 549 * res, 819 * res, 557 * res))
 
     #Saves img
-    #cap.save("cap.png")
     health.save("health_bar.png")
 
     #capture = cv2.imread("cap.png", 1)
@@ -28,11 +28,12 @@ def auto_pot():
 
 
 def chest_steal():
-    last_pos = pyautogui.position()
+    if keyboard.is_pressed("c"):
+        last_pos = pyautogui.position()
 
-    for item in range(4):
-        pyautogui.leftClick(2155 + item * 110, 1265)
-        pyautogui.leftClick(2155 + item * 110, 1265)
+        for item in range(4):
+            pyautogui.leftClick(2155 + item * 110, 1265)
+            pyautogui.leftClick(2155 + item * 110, 1265)
 
-    pyautogui.moveTo(last_pos)
+        pyautogui.moveTo(last_pos)
 

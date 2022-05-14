@@ -1,7 +1,6 @@
 import threading
 import PySimpleGUI as pg
 from scripts import *
-import keyboard
 
 pg.theme("DarkTeal4")
 
@@ -16,19 +15,15 @@ layout = [
 
 #Functions
 def auto_potion():
+    global toggle_autopot
     while toggle_autopot:
         auto_pot()
 
-    return
-
 
 def chest_stealer():
+    global toggle_cheststeal
     while toggle_cheststeal:
-        if keyboard.is_pressed("c"):
-            chest_steal()
-        else:
-            pass
-    return
+        chest_steal()
 
 
 window = pg.Window("ROTMG Scripts", layout, size=(300, 400))
@@ -52,6 +47,8 @@ while True:
         else:
             toggle_cheststeal = False
 
+        print(toggle_autopot)
+        print(toggle_cheststeal)
         print(threading.active_count())
 
 
